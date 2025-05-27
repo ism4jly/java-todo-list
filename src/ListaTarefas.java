@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class ListaTarefas {
@@ -11,8 +12,8 @@ public class ListaTarefas {
         if(tarefas.isEmpty()) {
             System.out.println("Nenhuma tarefa cadastrada.");
         } else {
-            for(int i = 1; i < tarefas.size(); i++){
-                System.out.println(i + " - " + tarefas.get(i));
+            for(int i = 0; i < tarefas.size(); i++){
+                System.out.println((i+1) + " - " + tarefas.get(i));
             }
         }
     }

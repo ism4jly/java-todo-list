@@ -30,12 +30,12 @@ public class Main {
                 case 3:
                     System.out.print("Digite o índice da tarefa a concluir: ");
                     int i = scanner.nextInt();
-                    lista.marcarConcluida(i);
+                    lista.marcarConcluida(i - 1);
                     break;
                 case 4:
                     System.out.print("Digite o índice da tarefa a remover: ");
                     int j = scanner.nextInt();
-                    lista.removerTarefa(j);
+                    lista.removerTarefa(j - 1);
                     break;
                 case 5:
                     System.out.println("Encerrando...");
