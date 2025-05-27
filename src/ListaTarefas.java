@@ -33,4 +33,38 @@ public class ListaTarefas {
             System.out.println("Índice inválido.");
         }
     }
+
+    public void salvarComoTexto(String caminho) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(caminho))) {
+            for (Tarefa t : tarefas) {
+                writer.printf("%s;%b\n", t.getDescricao(), t.isConcluida());
+            }
+            System.out.println("Tarefas salvas em arquivo.");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar tarefas: " + e.getMessage());
+        }
+    }
+
+    public void carregarDeTexto(String caminho) {
+        File arquivo = new File(caminho);
+        if (!arquivo.exists()) return;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                String[] partes = linha.split(";");
+                if (partes.length == 2) {
+                    String descricao = partes[0];
+                    boolean concluida = Boolean.parseBoolean(partes[1]);
+
+                    Tarefa t = new Tarefa(descricao);
+                    if (concluida) t.marcarConcluida();
+                    tarefas.add(t);
+                }
+            }
+            System.out.println("Tarefas carregadas do arquivo.");
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar tarefas: " + e.getMessage());
+        }
+    }
 }

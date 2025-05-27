@@ -4,6 +4,10 @@ public class Main {
     public static void main(String[] args) {
         ListaTarefas lista = new ListaTarefas();
         Scanner scanner = new Scanner(System.in);
+        String caminhoArquivo = "tarefas.txt";
+
+        lista.carregarDeTexto(caminhoArquivo);
+
         int opcao;
 
         do {
@@ -39,6 +43,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Encerrando...");
+                    lista.salvarComoTexto(caminhoArquivo);
                     break;
                 default:
                     System.out.println("Opção inválida.");
